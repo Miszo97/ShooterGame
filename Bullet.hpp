@@ -18,6 +18,8 @@ class Bullet : public Element {
     
     float rotation;
     sf::Vector2i mousePosition;
+    int amount_of_update = 0;
+    int amount_of_update_h = 1;
     
 public:
     Bullet(sf::Vector2f, sf::Vector2i);

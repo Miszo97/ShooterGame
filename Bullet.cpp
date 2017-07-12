@@ -8,6 +8,7 @@
 
 #include "Bullet.hpp"
 #include <cmath>
+#include <iostream>
 
 Bullet::Bullet(sf::Vector2f pl_pos, sf::Vector2i _mousePosition){
 
@@ -48,7 +49,6 @@ void Bullet::updateRotation(float p_r){
 void Bullet::UpdatePossision(){
     
     
-    
     float a = fabs(possision.x - mousePosition.x);
     float b = fabs(possision.y - mousePosition.y);
     
@@ -65,7 +65,7 @@ void Bullet::UpdatePossision(){
             
             bullet_sprite.move(-1 , -b/a);
         
-       
+        
     } else
         
         if (mousePosition.y<possision.y && mousePosition.x > possision.x)
@@ -107,7 +107,6 @@ void Bullet::UpdatePossision(){
                     
                     
                 }
-
     
     
     
