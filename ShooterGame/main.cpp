@@ -1,8 +1,6 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-
-// Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
 #include "Player.hpp"
 #include "Map.hpp"
@@ -20,6 +18,8 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+    
+    
 
     sf::Texture  array_of_body_textuers [5];
     
@@ -30,11 +30,14 @@ int main(int, char const**)
     sf::Texture bullet_texture;
     bullet_texture.loadFromFile(resourcePath() + "/images/bullet.png");
     
+    sf::Texture enemy_texture;
+    enemy_texture.loadFromFile(resourcePath() + "/images/survivor.png");
+    
     Map map;
     map.player.loadSpritesBody(array_of_body_textuers);
     
     
-    std::vector<Bullet>::iterator iter_bull;
+    map.createEnemy(enemy_texture);
     
 
     // Create a graphical text to display
@@ -80,7 +83,10 @@ int main(int, char const**)
             
             
             
-            
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+            {
+                map.createEnemy(enemy_texture);
+            }
             
             
             
@@ -97,9 +103,9 @@ int main(int, char const**)
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
-                // left key is pressed: move our character
+                
                 map.player.moveRight();
-                //std::cout<<"Right button has been clicked!";
+                
                 map.player.isGoingRight = true;
                 
             } else {
@@ -107,8 +113,7 @@ int main(int, char const**)
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
-                // left key is pressed: move our character
-                //std::cout<<"Up button has been clicked!";
+                
                 map.player.moveUp();
                 
                 map.player.isGoingForward = true;
@@ -121,7 +126,7 @@ int main(int, char const**)
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
-                // left key is pressed: move our character
+                
                 map.player.moveDown();
                 map.player.isGoingBackward = true;
                 
@@ -142,14 +147,26 @@ int main(int, char const**)
         map.player.updateRotation(localPosition);
         map.player.UpdatePossision();
         
+        if (!(map.Enemys.empty())) {
+            for (auto a = map.Enemys.begin(); a != map.Enemys.end(); ++a) a->UpdatePossision(map.player.possision);
+        }
+        
         
         if (!(map.Bullets.empty())) {
             for (auto a = map.Bullets.begin(); a != map.Bullets.end(); ++a) a->UpdatePossision();
         }
         
+        map.Bullet_Enemy_Coll();
+        
+                
+        
         
         if (!(map.Bullets.empty())) {
             for (auto a = map.Bullets.begin(); a != map.Bullets.end(); ++a) window.draw(*a);
+        }
+        
+        if (!(map.Enemys.empty())) {
+            for (auto a = map.Enemys.begin(); a != map.Enemys.end(); ++a) window.draw(*a);
         }
         
 
