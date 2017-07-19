@@ -8,11 +8,11 @@
 
 int main(int, char const**)
 {
-    // Create the main window
+    
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
     window.setFramerateLimit(60);
 
-    // Set the Icon
+    
     sf::Image icon;
     if (!icon.loadFromFile(resourcePath() + "icon.png")) {
         return EXIT_FAILURE;
@@ -21,11 +21,16 @@ int main(int, char const**)
     
     
 
-    sf::Texture  array_of_body_textuers [5];
+    sf::Texture  array_of_body_textuers [1];
+    
+    array_of_body_textuers[0].loadFromFile(resourcePath() + "/images/survivor.png");
+    
+    sf::Texture shoot_rifle[3];
     
     
-        array_of_body_textuers[0].loadFromFile(resourcePath() + "/images/survivor.png");
-    
+    shoot_rifle[0].loadFromFile(resourcePath() + "/shoot/survivor-shoot_rifle_0.png");
+    shoot_rifle[1].loadFromFile(resourcePath() + "/shoot/survivor-shoot_rifle_1.png");
+    shoot_rifle[2].loadFromFile(resourcePath() + "/shoot/survivor-shoot_rifle_2.png");
     
     sf::Texture bullet_texture;
     bullet_texture.loadFromFile(resourcePath() + "/images/bullet.png");
@@ -33,14 +38,24 @@ int main(int, char const**)
     sf::Texture enemy_texture;
     enemy_texture.loadFromFile(resourcePath() + "/images/survivor.png");
     
+    // Declare a new music
+    sf::Music music;
+    // Open it from an audio file
+    if (!music.openFromFile(resourcePath() + "gun_sound.wav"))
+    {
+        // error...
+    }
+    
+    
+    
     Map map;
-    map.player.loadSpritesBody(array_of_body_textuers);
+    map.player.loadSprites(array_of_body_textuers, shoot_rifle);
     
     
     map.createEnemy(enemy_texture);
     
 
-    // Create a graphical text to display
+    
     sf::Font font;
     if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
         return EXIT_FAILURE;
@@ -71,11 +86,12 @@ int main(int, char const**)
             }
           
             
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (event.type == sf::Event::MouseButtonPressed)
             {
                 sf::Vector2i localPosition = sf::Mouse::getPosition(window);
                 map.createBullet(bullet_texture, map.player.rotation, localPosition);
-            
+                map.player.Shoot();
+                music.play();
             }
             
             
@@ -92,9 +108,9 @@ int main(int, char const**)
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
-                // left key is pressed: move our character
+                
                 map.player.moveLeft();
-                //std::cout<<"Left button has been clicked!";
+               
                 map.player.isGoingLeft = true;
             } else {
                 map.player.isGoingLeft = false;
@@ -139,21 +155,35 @@ int main(int, char const**)
             
         }
 
-
+        
+        
         // Clear screen
-        window.clear();
+        window.clear(sf::Color(123,164,98));
         
         sf::Vector2i localPosition = sf::Mouse::getPosition(window);
         map.player.updateRotation(localPosition);
         map.player.UpdatePossision();
         
+        
         if (!(map.Enemys.empty())) {
-            for (auto a = map.Enemys.begin(); a != map.Enemys.end(); ++a) a->UpdatePossision(map.player.possision);
+            for (auto a = map.Enemys.begin(); a != map.Enemys.end(); ++a){
+                a->UpdatePossision(map.player.possision);
+                a->updateRotation(map.player.possision);
+            }
         }
         
         
         if (!(map.Bullets.empty())) {
-            for (auto a = map.Bullets.begin(); a != map.Bullets.end(); ++a) a->UpdatePossision();
+            for (auto a = map.Bullets.begin(); a != map.Bullets.end();) {
+                
+                if(a->possision.x > 800 || a->possision.x < 0) map.Bullets.erase(a);
+                    else
+                {
+                    a->UpdatePossision();
+
+                    ++a;
+                }
+            }
         }
         
         map.Bullet_Enemy_Coll();
