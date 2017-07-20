@@ -11,6 +11,9 @@
 		129A54321F1CD90100386141 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 129A542D1F1CD90100386141 /* Bullet.cpp */; };
 		129A54331F1CD90100386141 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 129A542F1F1CD90100386141 /* Entity.cpp */; };
 		129A54341F1CD90100386141 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 129A54311F1CD90100386141 /* Map.cpp */; };
+		129A54361F1CE63400386141 /* gun_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 129A54351F1CE63400386141 /* gun_sound.mp3 */; };
+		129A54381F1CE7ED00386141 /* gun_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 129A54371F1CE7ED00386141 /* gun_sound.wav */; };
+		129A543A1F1CEAE900386141 /* shoot in Resources */ = {isa = PBXBuildFile; fileRef = 129A54391F1CEAE900386141 /* shoot */; };
 		12F3A42C1F129F9400CF81E5 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12F3A42B1F129F9400CF81E5 /* ResourcePath.mm */; };
 		12F3A42F1F129F9400CF81E5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12F3A42E1F129F9400CF81E5 /* main.cpp */; };
 		12F3A4321F129F9400CF81E5 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12F3A4311F129F9400CF81E5 /* cute_image.jpg */; };
@@ -30,6 +33,9 @@
 		129A542F1F1CD90100386141 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		129A54301F1CD90100386141 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 		129A54311F1CD90100386141 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		129A54351F1CE63400386141 /* gun_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gun_sound.mp3; path = ../../gun_sound.mp3; sourceTree = "<group>"; };
+		129A54371F1CE7ED00386141 /* gun_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gun_sound.wav; path = ../../gun_sound.wav; sourceTree = "<group>"; };
+		129A54391F1CEAE900386141 /* shoot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shoot; path = "../../Game-Development/Top_Down_Survivor/rifle/shoot"; sourceTree = "<group>"; };
 		12F3A4261F129F9400CF81E5 /* ShooterGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShooterGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F3A42A1F129F9400CF81E5 /* ShooterGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShooterGame-Info.plist"; sourceTree = "<group>"; };
 		12F3A42B1F129F9400CF81E5 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -109,6 +115,9 @@
 		12F3A4301F129F9400CF81E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				129A54371F1CE7ED00386141 /* gun_sound.wav */,
+				129A54351F1CE63400386141 /* gun_sound.mp3 */,
+				129A54391F1CEAE900386141 /* shoot */,
 				120030791F12B0D2007F0347 /* images */,
 				12F3A4311F129F9400CF81E5 /* cute_image.jpg */,
 				12F3A4331F129F9400CF81E5 /* nice_music.ogg */,
@@ -178,8 +187,11 @@
 			files = (
 				1200307A1F12B0D2007F0347 /* images in Resources */,
 				12F3A4381F129F9400CF81E5 /* icon.png in Resources */,
+				129A543A1F1CEAE900386141 /* shoot in Resources */,
 				12F3A4361F129F9400CF81E5 /* sansation.ttf in Resources */,
+				129A54361F1CE63400386141 /* gun_sound.mp3 in Resources */,
 				12F3A4341F129F9400CF81E5 /* nice_music.ogg in Resources */,
+				129A54381F1CE7ED00386141 /* gun_sound.wav in Resources */,
 				12F3A4321F129F9400CF81E5 /* cute_image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

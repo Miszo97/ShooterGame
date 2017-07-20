@@ -10,6 +10,9 @@
 #include <cmath>
 #include <iostream>
 
+
+
+
 Bullet::Bullet(sf::Vector2f pl_pos, sf::Vector2i _mousePosition){
 
     mousePosition = _mousePosition;
@@ -81,6 +84,37 @@ Bullet::Bullet(sf::Vector2f pl_pos, sf::Vector2i _mousePosition){
 
 }
 
+void Bullet::setInitialPos(float p_rotation) noexcept{
+
+    float init_offset_x = 0;
+    float init_offset_y = 0;
+    
+    
+    
+    init_offset_y = sinf(fabs(((p_rotation / 180) * 3.14159265))) * 8;
+    init_offset_x = cosf(fabs(((p_rotation / 180) * 3.14159265))) * 8;
+    
+    
+    
+    if(p_rotation > 0){
+        
+        
+    } else
+    if (p_rotation <0){
+        init_offset_y *= -1;
+        
+        
+    }
+    
+    std::cout<<fabs(((p_rotation / 180) * 3.14159265))<<" "<<init_offset_y<<" "<<init_offset_x<<std::endl;
+    
+    possision.x += init_offset_x;
+    possision.y += init_offset_y;
+    
+    //std::cout<<p_rotation<<" "<<init_offset_x<<" "<<init_offset_y<<std::endl;
+
+}
+
 void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const    {
     
     
@@ -125,6 +159,13 @@ void Bullet::UpdatePossision(){
     
 
     
+    
+}
+
+
+Bullet::~Bullet(){
+    
+    //std::cout<<"Bullets'desctructor working"<<std::endl;
     
 }
 

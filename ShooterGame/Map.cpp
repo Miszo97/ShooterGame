@@ -23,6 +23,7 @@ void Map::createBullet(sf::Texture& bull_tex, float P_r, sf::Vector2i _mouseposi
     
     
     Bullet b(player.possision, _mouseposision);
+    b.setInitialPos(P_r);
     b.sprite.setTexture(bull_tex);
     b.sprite.setRotation(P_r);
     Bullets.push_back(b);
@@ -34,7 +35,7 @@ void Map::createEnemy(sf::Texture& enemy_tex){
     
     Enemy e(sf::Vector2f(40,40));
     e.loadEnemySprite(enemy_tex);
-    Enemys.push_back(e);
+    Enemys.push_back(std::move(e));
     
 }
 

@@ -26,7 +26,7 @@ class Enemy : public Entity {
     public:
     
     bool touched;
-    
+    void updateRotation(sf::Vector2f) noexcept;
     sf::Sprite sprite;
     Enemy(sf::Vector2f);
     void UpdatePossision(sf::Vector2f);

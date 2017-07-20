@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Map.hpp"
 #include <iostream>
+#include <math.h>
 
 int main(int, char const**)
 {
@@ -36,7 +37,7 @@ int main(int, char const**)
     bullet_texture.loadFromFile(resourcePath() + "/images/bullet.png");
     
     sf::Texture enemy_texture;
-    enemy_texture.loadFromFile(resourcePath() + "/images/survivor.png");
+    enemy_texture.loadFromFile(resourcePath() + "/images/enemy_texture.png");
     
     // Declare a new music
     sf::Music music;
@@ -46,13 +47,15 @@ int main(int, char const**)
         // error...
     }
     
-    
+    sf::Clock clock;
+    sf::Time enemy_spawn = sf::seconds(1);
     
     Map map;
     map.player.loadSprites(array_of_body_textuers, shoot_rifle);
     
     
-    map.createEnemy(enemy_texture);
+    
+    
     
 
     
@@ -60,6 +63,11 @@ int main(int, char const**)
     if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
         return EXIT_FAILURE;
     }
+    
+    sf::Text text;
+    text.setFont(font);
+    text.setPosition(700, 30);
+    
     
 
    
@@ -69,8 +77,7 @@ int main(int, char const**)
     // Start the game loop
     while (window.isOpen())
     {
-        // Starting sf::Clock
-        sf::Clock clock;
+        
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -153,8 +160,16 @@ int main(int, char const**)
             
             
             
+            
         }
-
+        sf::Time elapsed = clock.getElapsedTime();
+        text.setString(std::to_string(floor(elapsed.asSeconds())));
+        if (elapsed.asSeconds() > enemy_spawn.asSeconds()) {
+            map.createEnemy(enemy_texture);
+            enemy_spawn += sf::seconds(1);
+        }
+        
+        //std::cout<<clock.getElapsedTime().asSeconds()<<std::endl;
         
         
         // Clear screen
@@ -199,9 +214,11 @@ int main(int, char const**)
             for (auto a = map.Enemys.begin(); a != map.Enemys.end(); ++a) window.draw(*a);
         }
         
-
-        window.draw(map.player);
         
+        
+        
+        window.draw(map.player);
+        window.draw(text);
         
         
         

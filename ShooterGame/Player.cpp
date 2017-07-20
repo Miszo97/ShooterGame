@@ -22,10 +22,12 @@ Player::Player(){
     
     
     
-    
 }
 
-void Player::loadSpritesBody(sf::Texture * body_texture_ptr){
+
+
+
+void Player::loadSprites(sf::Texture * body_texture_ptr, sf::Texture * rifle_shoot_ptr){
     
     for (int i =0 ; i<1 ; i++) {
         
@@ -36,17 +38,29 @@ void Player::loadSpritesBody(sf::Texture * body_texture_ptr){
         body_sprites[i].setOrigin(Rect.width/2, Rect.height/2);
        
     }
+    
+    for (int i =0 ; i<3 ; i++) {
+        
+        riffle_shoot_sprites[i].setTexture(body_texture_ptr[i]);
+        riffle_shoot_sprites[i].setPosition(possision);
+        riffle_shoot_sprites[i].scale(0.25, 0.25);
+        sf::IntRect Rect =  riffle_shoot_sprites[i].getTextureRect();
+        riffle_shoot_sprites[i].setOrigin(Rect.width/2, Rect.height/2);
+        
+    }
 
 }
 
 
+
+
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const    {
     
-    for (int i =0 ; i<5 ; i++) {
+    
         
-        target.draw(body_sprites[i] ,states);
+        target.draw(body_sprites[0] ,states);
         
-    }
+    
 }
 
 

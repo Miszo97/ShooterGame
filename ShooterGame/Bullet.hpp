@@ -23,12 +23,14 @@ class Bullet : public Element {
     
     sf::Vector2i mousePosition;
    
-    int speed = 5;
+    int speed = 15;
     
 public:
     Bullet(sf::Vector2f, sf::Vector2i);
+    ~Bullet();
     void UpdatePossision();
     void updateRotation(float);
+    void setInitialPos(float) noexcept;
     
     
     
