@@ -9,3 +9,9 @@
 #include "Entity.hpp"
 
 
+void Entity::reduceHP(int _hp){
+    
+    
+    hp -= _hp;
+    
+}

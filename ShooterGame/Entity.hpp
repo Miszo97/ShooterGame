@@ -21,6 +21,7 @@ protected:
     
 public:
     
+    int hp;
     double time_step;
     sf::Vector2f velocity;
     sf::Vector2f acceleration;

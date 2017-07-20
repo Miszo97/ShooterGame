@@ -27,9 +27,10 @@ public:
     
     Player player;
     
-    void createEnemy();
+    void createEnemy(sf::Texture&);
     void createBullet(sf::Texture&, float, sf::Vector2i);
     void UpdateElements();
+    void Bullet_Enemy_Coll();
     
     template <typename T1, typename T2>
     bool check_for_collsion_EE(T1& object1,T2& object2){

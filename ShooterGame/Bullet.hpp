@@ -17,16 +17,24 @@
 class Bullet : public Element {
     
     float rotation;
+    float ratio;
+    float offset_x;
+    float offset_y;
+    
     sf::Vector2i mousePosition;
+   
+    int speed = 15;
     
 public:
     Bullet(sf::Vector2f, sf::Vector2i);
+    ~Bullet();
     void UpdatePossision();
     void updateRotation(float);
+    void setInitialPos(float) noexcept;
     
     
     
-    sf::Sprite bullet_sprite;
+    sf::Sprite sprite;
     sf::RectangleShape rect = sf::RectangleShape(sf::Vector2f(50,50));
     
 
