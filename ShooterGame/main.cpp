@@ -6,19 +6,33 @@
 #include "Map.hpp"
 #include <iostream>
 #include <math.h>
+//#include "screens.hpp"
+#include "cScreen.cpp"
+#include "screen_0.hpp"
+#include "screen_1.hpp"
 
 int main(int, char const**)
 {
+    
+    //Applications variables
+    std::vector<cScreen*> Screens;
+    int screen = 0;
     
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
     window.setFramerateLimit(60);
 
     
-    sf::Image icon;
-    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
-        return EXIT_FAILURE;
+    screen_0 s0;
+    Screens.push_back(&s0);
+    screen_1 s1;
+    Screens.push_back(&s1);
+    
+    //Main loop
+    while (screen >= 0)
+    {
+        screen = Screens[screen]->Run(window);
     }
-    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
     
     
 
@@ -55,7 +69,8 @@ int main(int, char const**)
     
     
     
-    
+    map.createEnemy(enemy_texture);
+    //map.createEnemy(enemy_texture);
     
 
     
@@ -64,9 +79,13 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     
-    sf::Text text;
-    text.setFont(font);
-    text.setPosition(700, 30);
+    sf::Text elapsed_time;
+    elapsed_time.setFont(font);
+    elapsed_time.setPosition(700, 30);
+    
+    sf::Text hp_text;
+    hp_text.setFont(font);
+    hp_text.setPosition(600, 30);
     
     
 
@@ -163,16 +182,17 @@ int main(int, char const**)
             
         }
         sf::Time elapsed = clock.getElapsedTime();
-        text.setString(std::to_string(floor(elapsed.asSeconds())));
+        hp_text.setString(std::to_string(floor(elapsed.asSeconds())));
+        
         if (elapsed.asSeconds() > enemy_spawn.asSeconds()) {
             map.createEnemy(enemy_texture);
             enemy_spawn += sf::seconds(1);
         }
         
-        //std::cout<<clock.getElapsedTime().asSeconds()<<std::endl;
         
         
-        // Clear screen
+        
+        
         window.clear(sf::Color(123,164,98));
         
         sf::Vector2i localPosition = sf::Mouse::getPosition(window);
@@ -182,6 +202,7 @@ int main(int, char const**)
         
         if (!(map.Enemys.empty())) {
             for (auto a = map.Enemys.begin(); a != map.Enemys.end(); ++a){
+                if (a->abilityToAtack() == true) map.player.reduceHP(10);
                 a->UpdatePossision(map.player.possision);
                 a->updateRotation(map.player.possision);
             }
@@ -215,10 +236,12 @@ int main(int, char const**)
         }
         
         
-        
+        hp_text.setString(std::to_string(map.player.hp));
         
         window.draw(map.player);
-        window.draw(text);
+        
+        window.draw(elapsed_time);
+        window.draw(hp_text);
         
         
         

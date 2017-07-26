@@ -106,7 +106,7 @@ void Bullet::setInitialPos(float p_rotation) noexcept{
         
     }
     
-    std::cout<<fabs(((p_rotation / 180) * 3.14159265))<<" "<<init_offset_y<<" "<<init_offset_x<<std::endl;
+    //std::cout<<fabs(((p_rotation / 180) * 3.14159265))<<" "<<init_offset_y<<" "<<init_offset_x<<std::endl;
     
     possision.x += init_offset_x;
     possision.y += init_offset_y;
@@ -137,6 +137,13 @@ void Bullet::updateRotation(float p_r){
     rotation = p_r;
     sprite.setRotation(p_r);
     
+}
+
+
+sf::Sprite * Bullet::getSprite(){
+
+    return &sprite;
+
 }
 
 

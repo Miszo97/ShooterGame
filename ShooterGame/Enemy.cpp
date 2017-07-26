@@ -23,6 +23,7 @@ Enemy::Enemy(sf::Vector2f pos) {
     sf::IntRect Rect =  sprite.getTextureRect();
     sprite.setOrigin(Rect.width/2, Rect.height/2);
     sprite.scale(0.25,0.25);
+    touched = false;
     
     hp = 20;
     
@@ -55,6 +56,23 @@ Enemy::Enemy(sf::Vector2f pos) {
 
     
     
+}
+
+
+bool Enemy::abilityToAtack(){
+
+    if(touched && clock.getElapsedTime().asSeconds() > atackAfter.asSeconds()){
+    
+        clock.restart();
+        return true;
+    
+    
+    }
+    
+    return false;
+
+
+
 }
 
 void Enemy::updateRotation(sf::Vector2f p_p) noexcept {
@@ -127,22 +145,31 @@ void Enemy::loadEnemySprite(const sf::Texture & enemy_texture){
     
 }
 
+sf::Sprite * Enemy::getSprite(){
+    
+    return &sprite;
+    
+}
+
 void Enemy::UpdatePossision(sf::Vector2f p_p){
    
-    p_p.x -= 25;
-    p_p.y -= 25;
+    //p_p.x -= 25;
+   // p_p.y -= 25;
     
     float offset_x = 0;
     float offset_y = 0;
     float ratio = 0;
     
     if (fabs(p_p.x - possision.x)< 5) {
-        possision = p_p;
+        
+        touched = true;
         
     } else
         
     {
-    
+        
+    touched = false;
+        
     float a = fabs(possision.x - p_p.x);
     float b = fabs(possision.y - p_p.y);
     
@@ -209,7 +236,7 @@ void Enemy::UpdatePossision(sf::Vector2f p_p){
     
 //    std::cout<<"Offset_x: "<<offset_x<<" Offset_y: "<<offset_y<<" Ratio: "<<ratio<<std::endl;
 //    std::cout<<sprite.getPosition().x<<" "<<sprite.getPosition().y<<std::endl;
-//    std::cout<<p_p.x<<" "<<p_p.y<<" "<<possision.x<<" "<<possision.y<<std::endl;
+    std::cout<<p_p.x<<" "<<p_p.y<<" "<<possision.x<<" "<<possision.y<<std::endl;
     
 
 }

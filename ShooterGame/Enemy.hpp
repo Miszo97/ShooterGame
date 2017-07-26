@@ -20,11 +20,14 @@ class Enemy : public Entity {
     
     int speed = 1;
     float rotation;
-    
+    sf::Time atackAfter = sf::seconds(1);
+    sf::Clock clock;
     
     
     public:
     
+    sf::Sprite * getSprite();
+    bool abilityToAtack();
     bool touched;
     void updateRotation(sf::Vector2f) noexcept;
     sf::Sprite sprite;

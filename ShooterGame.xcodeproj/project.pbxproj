@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1200307A1F12B0D2007F0347 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 120030791F12B0D2007F0347 /* images */; };
+		128A314B1F23D11900E7DBF6 /* cScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 128A31491F23D11900E7DBF6 /* cScreen.cpp */; };
 		129A54321F1CD90100386141 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 129A542D1F1CD90100386141 /* Bullet.cpp */; };
 		129A54331F1CD90100386141 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 129A542F1F1CD90100386141 /* Entity.cpp */; };
 		129A54341F1CD90100386141 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 129A54311F1CD90100386141 /* Map.cpp */; };
@@ -27,6 +28,10 @@
 
 /* Begin PBXFileReference section */
 		120030791F12B0D2007F0347 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = "../../Game-Development/Survivor Spine/images"; sourceTree = "<group>"; };
+		124357E21F28B59800E6680B /* screen_0.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = screen_0.hpp; sourceTree = "<group>"; };
+		124357E51F28B5B100E6680B /* screen_1.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = screen_1.hpp; sourceTree = "<group>"; };
+		128A31491F23D11900E7DBF6 /* cScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cScreen.cpp; sourceTree = "<group>"; };
+		128A314A1F23D11900E7DBF6 /* cScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cScreen.hpp; sourceTree = "<group>"; };
 		129A542C1F1CD8DE00386141 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 		129A542D1F1CD90100386141 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		129A542E1F1CD90100386141 /* Bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
@@ -84,20 +89,24 @@
 			isa = PBXGroup;
 			children = (
 				129A542D1F1CD90100386141 /* Bullet.cpp */,
-				129A542E1F1CD90100386141 /* Bullet.hpp */,
-				129A542F1F1CD90100386141 /* Entity.cpp */,
-				129A54301F1CD90100386141 /* Entity.hpp */,
-				129A54311F1CD90100386141 /* Map.cpp */,
-				129A542C1F1CD8DE00386141 /* Map.hpp */,
+				128A31491F23D11900E7DBF6 /* cScreen.cpp */,
+				128A314A1F23D11900E7DBF6 /* cScreen.hpp */,
 				12F3A4531F12A3FD00CF81E5 /* Element.cpp */,
-				12F3A4541F12A3FD00CF81E5 /* Element.hpp */,
-				12F3A42B1F129F9400CF81E5 /* ResourcePath.mm */,
-				12F3A42D1F129F9400CF81E5 /* ResourcePath.hpp */,
-				12F3A42E1F129F9400CF81E5 /* main.cpp */,
-				12F3A4441F129FF300CF81E5 /* Player.cpp */,
-				12F3A4451F129FF300CF81E5 /* Player.hpp */,
 				12F3A4471F12A00C00CF81E5 /* Enemy.cpp */,
+				129A542F1F1CD90100386141 /* Entity.cpp */,
+				12F3A42E1F129F9400CF81E5 /* main.cpp */,
+				124357E21F28B59800E6680B /* screen_0.hpp */,
+				124357E51F28B5B100E6680B /* screen_1.hpp */,
+				129A54311F1CD90100386141 /* Map.cpp */,
+				12F3A4441F129FF300CF81E5 /* Player.cpp */,
+				129A542E1F1CD90100386141 /* Bullet.hpp */,
+				12F3A4541F12A3FD00CF81E5 /* Element.hpp */,
 				12F3A4481F12A00C00CF81E5 /* Enemy.hpp */,
+				129A54301F1CD90100386141 /* Entity.hpp */,
+				129A542C1F1CD8DE00386141 /* Map.hpp */,
+				12F3A4451F129FF300CF81E5 /* Player.hpp */,
+				12F3A42D1F129F9400CF81E5 /* ResourcePath.hpp */,
+				12F3A42B1F129F9400CF81E5 /* ResourcePath.mm */,
 				12F3A4301F129F9400CF81E5 /* Resources */,
 				12F3A4291F129F9400CF81E5 /* Supporting Files */,
 			);
@@ -222,6 +231,7 @@
 				12F3A4491F12A00C00CF81E5 /* Enemy.cpp in Sources */,
 				12F3A42F1F129F9400CF81E5 /* main.cpp in Sources */,
 				129A54321F1CD90100386141 /* Bullet.cpp in Sources */,
+				128A314B1F23D11900E7DBF6 /* cScreen.cpp in Sources */,
 				12F3A42C1F129F9400CF81E5 /* ResourcePath.mm in Sources */,
 				129A54341F1CD90100386141 /* Map.cpp in Sources */,
 				12F3A4551F12A3FD00CF81E5 /* Element.cpp in Sources */,

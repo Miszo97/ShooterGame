@@ -22,7 +22,7 @@ class Bullet : public Element {
     float offset_y;
     
     sf::Vector2i mousePosition;
-   
+    
     int speed = 15;
     
 public:
@@ -33,6 +33,8 @@ public:
     void setInitialPos(float) noexcept;
     
     
+    
+    sf::Sprite * getSprite();
     
     sf::Sprite sprite;
     sf::RectangleShape rect = sf::RectangleShape(sf::Vector2f(50,50));

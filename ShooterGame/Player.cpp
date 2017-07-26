@@ -16,13 +16,22 @@ Player::Player(){
     time_step= 0.016;
     velocity = sf::Vector2f(0,0);
     acceleration = sf::Vector2f(0,0);
-    
+    hp = 100;
     
     
     
     
     
 }
+
+sf::Sprite * Player::getSprite(){
+
+
+    return body_sprites;
+
+
+}
+
 
 
 

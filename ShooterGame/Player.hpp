@@ -34,6 +34,8 @@ public:
     sf::Sprite body_sprites [5];
     sf::Sprite riffle_shoot_sprites[3];
     
+    sf::Sprite * getSprite();
+    
     
     void Shoot();
     void moveUp();
