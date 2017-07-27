@@ -160,7 +160,7 @@ void Enemy::UpdatePossision(sf::Vector2f p_p){
     float offset_y = 0;
     float ratio = 0;
     
-    if (fabs(p_p.x - possision.x)< 5) {
+    if (fabs(p_p.x - possision.x)< 5 && fabs(p_p.y - possision.y)< 5) {
         
         touched = true;
         
@@ -236,7 +236,7 @@ void Enemy::UpdatePossision(sf::Vector2f p_p){
     
 //    std::cout<<"Offset_x: "<<offset_x<<" Offset_y: "<<offset_y<<" Ratio: "<<ratio<<std::endl;
 //    std::cout<<sprite.getPosition().x<<" "<<sprite.getPosition().y<<std::endl;
-    std::cout<<p_p.x<<" "<<p_p.y<<" "<<possision.x<<" "<<possision.y<<std::endl;
+    //std::cout<<p_p.x<<" "<<p_p.y<<" "<<possision.x<<" "<<possision.y<<std::endl;
     
 
 }

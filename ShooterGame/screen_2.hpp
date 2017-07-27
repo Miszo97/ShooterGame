@@ -3,25 +3,25 @@
 
 #include <SFML/Graphics.hpp>
 
-class screen_0 : public cScreen
+class screen_2 : public cScreen
 {
 private:
     int alpha_max;
     int alpha_div;
     bool playing;
 public:
-    screen_0(void);
+    screen_2(void);
     virtual int Run(sf::RenderWindow &App);
 };
 
-screen_0::screen_0(void)
+screen_2::screen_2(void)
 {
     alpha_max = 3 * 255;
     alpha_div = 3;
     playing = false;
 }
 
-int screen_0::Run(sf::RenderWindow &App)
+int screen_2::Run(sf::RenderWindow &App)
 {
     sf::Event Event;
     bool Running = true;
@@ -51,17 +51,17 @@ int screen_0::Run(sf::RenderWindow &App)
     
     Menu1.setFont(Font);
     Menu1.setCharacterSize(40);
-    Menu1.setString("Play");
+    Menu1.setString("Game over");
     Menu1.setPosition({ 280.f, 160.f });
     
     Menu2.setFont(Font);
     Menu2.setCharacterSize(40);
-    Menu2.setString("Exit");
+    Menu2.setString("Your result: ");
     Menu2.setPosition({ 280.f, 220.f });
     
     Menu3.setFont(Font);
     Menu3.setCharacterSize(40);
-    Menu3.setString("Continue");
+    Menu3.setString("Play Again");
     Menu3.setPosition({ 280.f, 160.f });
     
     if (playing)
@@ -133,8 +133,7 @@ int screen_0::Run(sf::RenderWindow &App)
         App.clear(sf::Color::White);
         //Drawing
         App.draw(Sprite);
-        if (alpha == alpha_max)
-        {
+        
             if (playing)
             {
                 App.draw(Menu3);
@@ -144,7 +143,7 @@ int screen_0::Run(sf::RenderWindow &App)
                 App.draw(Menu1);
             }
             App.draw(Menu2);
-        }
+        
         App.display();
     }
     

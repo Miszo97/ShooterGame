@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1200307A1F12B0D2007F0347 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 120030791F12B0D2007F0347 /* images */; };
+		124357EC1F2925CD00E6680B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 124357EB1F2925CD00E6680B /* background.png */; };
 		128A314B1F23D11900E7DBF6 /* cScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 128A31491F23D11900E7DBF6 /* cScreen.cpp */; };
 		129A54321F1CD90100386141 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 129A542D1F1CD90100386141 /* Bullet.cpp */; };
 		129A54331F1CD90100386141 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 129A542F1F1CD90100386141 /* Entity.cpp */; };
@@ -30,6 +31,8 @@
 		120030791F12B0D2007F0347 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = "../../Game-Development/Survivor Spine/images"; sourceTree = "<group>"; };
 		124357E21F28B59800E6680B /* screen_0.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = screen_0.hpp; sourceTree = "<group>"; };
 		124357E51F28B5B100E6680B /* screen_1.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = screen_1.hpp; sourceTree = "<group>"; };
+		124357EB1F2925CD00E6680B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../background.png; sourceTree = "<group>"; };
+		1278D71E1F29ED3400CF573A /* screen_2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = screen_2.hpp; sourceTree = "<group>"; };
 		128A31491F23D11900E7DBF6 /* cScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cScreen.cpp; sourceTree = "<group>"; };
 		128A314A1F23D11900E7DBF6 /* cScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cScreen.hpp; sourceTree = "<group>"; };
 		129A542C1F1CD8DE00386141 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 				124357E21F28B59800E6680B /* screen_0.hpp */,
 				124357E51F28B5B100E6680B /* screen_1.hpp */,
 				129A54311F1CD90100386141 /* Map.cpp */,
+				1278D71E1F29ED3400CF573A /* screen_2.hpp */,
 				12F3A4441F129FF300CF81E5 /* Player.cpp */,
 				129A542E1F1CD90100386141 /* Bullet.hpp */,
 				12F3A4541F12A3FD00CF81E5 /* Element.hpp */,
@@ -124,6 +128,7 @@
 		12F3A4301F129F9400CF81E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				124357EB1F2925CD00E6680B /* background.png */,
 				129A54371F1CE7ED00386141 /* gun_sound.wav */,
 				129A54351F1CE63400386141 /* gun_sound.mp3 */,
 				129A54391F1CEAE900386141 /* shoot */,
@@ -201,6 +206,7 @@
 				129A54361F1CE63400386141 /* gun_sound.mp3 in Resources */,
 				12F3A4341F129F9400CF81E5 /* nice_music.ogg in Resources */,
 				129A54381F1CE7ED00386141 /* gun_sound.wav in Resources */,
+				124357EC1F2925CD00E6680B /* background.png in Resources */,
 				12F3A4321F129F9400CF81E5 /* cute_image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

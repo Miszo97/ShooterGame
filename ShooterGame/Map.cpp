@@ -56,7 +56,7 @@ void Map::Player_Enemy_Coll() noexcept{
                     }
                     
                     
-                        a->touched = true;
+                       
                     
                     
                     

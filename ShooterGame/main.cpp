@@ -10,6 +10,7 @@
 #include "cScreen.cpp"
 #include "screen_0.hpp"
 #include "screen_1.hpp"
+#include "screen_2.hpp"
 
 int main(int, char const**)
 {
@@ -22,11 +23,15 @@ int main(int, char const**)
     window.setFramerateLimit(60);
 
     
-//    screen_0 s0;
-//    Screens.push_back(&s0);
+    screen_0 s0;
+    Screens.push_back(&s0);
     
     screen_1 s1;
     Screens.push_back(&s1);
+    
+    screen_2 s2;
+    Screens.push_back(&s2);
+    
     
     //Main loop
     while (screen >= 0)

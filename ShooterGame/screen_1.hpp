@@ -18,6 +18,8 @@ private:
     sf::Font font;
     sf::Text elapsed_time;
     sf::Text hp_text;
+    sf::Time savedTime = sf::seconds(0);
+    sf::Time elapsed;
     
     public:
     
@@ -64,17 +66,17 @@ screen_1::screen_1(void)
     
    
     elapsed_time.setFont(font);
-    elapsed_time.setPosition(700, 30);
+    elapsed_time.setPosition(20, 15);
     hp_text.setFont(font);
-    hp_text.setPosition(600, 30);
+    hp_text.setPosition(700, 15);
 }
 
 int screen_1::Run(sf::RenderWindow &App)
 {
     
+    clock.restart();
     
     
-
     
     while (Running)
     {
@@ -82,19 +84,15 @@ int screen_1::Run(sf::RenderWindow &App)
         //Verifying events
         while (App.pollEvent(event))
         {
-            // Window closed
-            if (event.type == sf::Event::Closed)
-            {
-                return (-1);
-            }
-            // Close window: exit
+            
             if (event.type == sf::Event::Closed) {
-                App.close();
+                return (-1);
             }
             
             // Escape pressed: exit
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                App.close();
+                savedTime += clock.getElapsedTime();
+                return (0);
             }
             
             
@@ -164,10 +162,10 @@ int screen_1::Run(sf::RenderWindow &App)
             }
         }
         
-        sf::Time elapsed = clock.getElapsedTime();
-        hp_text.setString(std::to_string(floor(elapsed.asSeconds())));
+        elapsed = clock.getElapsedTime();
+        elapsed_time.setString(std::to_string(static_cast<int>(floor(elapsed.asSeconds()+savedTime.asSeconds()))));
         
-        if (elapsed.asSeconds() > enemy_spawn.asSeconds()) {
+        if (elapsed.asSeconds() + savedTime.asSeconds() > enemy_spawn.asSeconds()) {
             map.createEnemy(enemy_texture);
             enemy_spawn += sf::seconds(1);
         }
@@ -185,7 +183,11 @@ int screen_1::Run(sf::RenderWindow &App)
         
         if (!(map.Enemys.empty())) {
             for (auto a = map.Enemys.begin(); a != map.Enemys.end(); ++a){
-                if (a->abilityToAtack() == true) map.player.reduceHP(10);
+                if (a->abilityToAtack() == true) {
+                    map.player.reduceHP(10);
+                    std::cout<<"true";
+                    if(map.player.hp == 0) return 2;
+                }
                 a->UpdatePossision(map.player.possision);
                 a->updateRotation(map.player.possision);
             }
