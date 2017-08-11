@@ -2,7 +2,7 @@
 
 Impersonate a solder and kill enemies! <br />
 
-![stack Overflow](https://gfycat.com/gifs/detail/MildSatisfiedBovine)
+![stack Overflow](https://thumbs.gfycat.com/MildSatisfiedBovine-size_restricted.gif)
 
 
 ### Description
