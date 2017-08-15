@@ -9,15 +9,14 @@ private:
     int alpha_max;
     int alpha_div;
     bool playing;
+    sf::Text & score_;
 public:
-    screen_2(void);
+    screen_2(sf::Text&);
     virtual int Run(sf::RenderWindow &App);
 };
 
-screen_2::screen_2(void)
+screen_2::screen_2(sf::Text & score) : score_(score)
 {
-    alpha_max = 3 * 255;
-    alpha_div = 3;
     playing = false;
 }
 
@@ -27,7 +26,7 @@ int screen_2::Run(sf::RenderWindow &App)
     bool Running = true;
     sf::Texture Texture;
     sf::Sprite Sprite;
-    int alpha = 0;
+    
     sf::Font Font;
     sf::Text Menu1;
     sf::Text Menu2;
@@ -40,7 +39,7 @@ int screen_2::Run(sf::RenderWindow &App)
         return (-1);
     }
     Sprite.setTexture(Texture);
-    Sprite.setColor(sf::Color(255, 255, 255, alpha));
+    Sprite.setColor(sf::Color(255, 255, 255));
     
     if (!Font.loadFromFile(resourcePath() + "sansation.ttf"))
     {
@@ -56,18 +55,16 @@ int screen_2::Run(sf::RenderWindow &App)
     
     Menu2.setFont(Font);
     Menu2.setCharacterSize(40);
-    Menu2.setString("Your result: ");
+    Menu2.setString("Your result: " + score_.getString());
     Menu2.setPosition({ 280.f, 220.f });
     
     Menu3.setFont(Font);
     Menu3.setCharacterSize(40);
     Menu3.setString("Play Again");
-    Menu3.setPosition({ 280.f, 160.f });
+    Menu3.setPosition({ 280.f, 280.f });
+    Menu3.setColor(sf::Color(255, 0, 0, 255));
     
-    if (playing)
-    {
-        alpha = alpha_max;
-    }
+    
     
     while (Running)
     {
@@ -84,64 +81,34 @@ int screen_2::Run(sf::RenderWindow &App)
             {
                 switch (Event.key.code)
                 {
-                    case sf::Keyboard::Up:
-                        menu = 0;
-                        break;
-                    case sf::Keyboard::Down:
-                        menu = 1;
-                        break;
-                    case sf::Keyboard::Return:
+                        case sf::Keyboard::Return:
                         if (menu == 0)
                         {
                             //Let's get play !
                             playing = true;
                             return (1);
                         }
-                        else
-                        {
-                            //Let's get work...
-                            return (-1);
-                        }
+                        
                         break;
                     default:
                         break;
                 }
             }
         }
-        //When getting at alpha_max, we stop modifying the sprite
-        if (alpha<alpha_max)
-        {
-            alpha+=5;
-        }
-        Sprite.setColor(sf::Color(255, 255, 255, alpha / alpha_div));
-        if (menu == 0)
-        {
-            Menu1.setColor(sf::Color(255, 0, 0, 255));
-            Menu2.setColor(sf::Color(255, 255, 255, 255));
-            Menu3.setColor(sf::Color(255, 0, 0, 255));
-        }
-        else
-        {
-            Menu1.setColor(sf::Color(255, 255, 255, 255));
-            Menu2.setColor(sf::Color(255, 0, 0, 255));
-            Menu3.setColor(sf::Color(255, 255, 255, 255));
-        }
         
-        //std::cout<<"sd";
+        
+        
         
         //Clearing screen
         App.clear(sf::Color::White);
         //Drawing
         App.draw(Sprite);
         
-            if (playing)
-            {
-                App.draw(Menu3);
-            }
-            else
-            {
-                App.draw(Menu1);
-            }
+        
+            App.draw(Menu3);
+        
+            App.draw(Menu1);
+    
             App.draw(Menu2);
         
         App.display();

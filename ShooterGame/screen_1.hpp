@@ -13,21 +13,24 @@ private:
     sf::Texture enemy_texture;
     sf::Music music;
     sf::Clock clock;
-    sf::Time enemy_spawn = sf::seconds(1);
+    sf::Time enemy_spawn = sf::milliseconds(1000);
+    sf::Time enemy_spawn_added = sf::milliseconds(1000);
     Map map;
     sf::Font font;
     sf::Text elapsed_time;
     sf::Text hp_text;
     sf::Time savedTime = sf::seconds(0);
     sf::Time elapsed;
+    sf::Text & score_;
+    void gameOver();
     
     public:
     
-    screen_1(void);
+    screen_1(sf::Text &);
     virtual int Run(sf::RenderWindow &App);
 };
 
-screen_1::screen_1(void)
+screen_1::screen_1(sf::Text & score) : score_(score)
 {
     
     array_of_body_textuers[0].loadFromFile(resourcePath() + "/images/survivor.png");
@@ -75,6 +78,7 @@ int screen_1::Run(sf::RenderWindow &App)
 {
     
     clock.restart();
+    
     
     
     
@@ -167,7 +171,9 @@ int screen_1::Run(sf::RenderWindow &App)
         
         if (elapsed.asSeconds() + savedTime.asSeconds() > enemy_spawn.asSeconds()) {
             map.createEnemy(enemy_texture);
-            enemy_spawn += sf::seconds(1);
+            enemy_spawn += enemy_spawn_added;
+            if (enemy_spawn_added > sf::milliseconds(200))
+            enemy_spawn_added -= sf::milliseconds(10);
         }
         
         
@@ -186,7 +192,7 @@ int screen_1::Run(sf::RenderWindow &App)
                 if (a->abilityToAtack() == true) {
                     map.player.reduceHP(10);
                     std::cout<<"true";
-                    if(map.player.hp == 0) return 2;
+                    if(map.player.hp == 0) {gameOver();  return 2;}
                 }
                 a->UpdatePossision(map.player.possision);
                 a->updateRotation(map.player.possision);
@@ -238,4 +244,16 @@ int screen_1::Run(sf::RenderWindow &App)
     
     //Never reaching this point normally, but just in case, exit the application
     return -1;
+}
+
+void screen_1::gameOver(){
+    
+    score_ = elapsed_time;
+    this->map.player.hp = 100;
+    this->map.deleteAllEnemys();
+    elapsed = sf::seconds(0);
+    savedTime = sf::seconds(0);
+    enemy_spawn = sf::seconds(0);
+    enemy_spawn_added = sf::milliseconds(1000);
+    
 }

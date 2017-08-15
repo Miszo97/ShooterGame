@@ -19,17 +19,18 @@ int main(int, char const**)
     std::vector<cScreen*> Screens;
     int screen = 0;
     
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window", sf::Style::Close);
     window.setFramerateLimit(60);
 
+    sf::Text score;
     
     screen_0 s0;
     Screens.push_back(&s0);
     
-    screen_1 s1;
+    screen_1 s1(score);
     Screens.push_back(&s1);
     
-    screen_2 s2;
+    screen_2 s2(score);
     Screens.push_back(&s2);
     
     

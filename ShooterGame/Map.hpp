@@ -32,6 +32,7 @@ public:
     void UpdateElements();
     void Bullet_Enemy_Coll();
     void Player_Enemy_Coll() noexcept;
+    void deleteAllEnemys()noexcept;
     
     
     

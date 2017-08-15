@@ -44,7 +44,7 @@
 		129A54351F1CE63400386141 /* gun_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gun_sound.mp3; path = ../../gun_sound.mp3; sourceTree = "<group>"; };
 		129A54371F1CE7ED00386141 /* gun_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gun_sound.wav; path = ../../gun_sound.wav; sourceTree = "<group>"; };
 		129A54391F1CEAE900386141 /* shoot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shoot; path = "../../Game-Development/Top_Down_Survivor/rifle/shoot"; sourceTree = "<group>"; };
-		12F3A4261F129F9400CF81E5 /* ShooterGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShooterGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12F3A4261F129F9400CF81E5 /* ShooterGame.exe */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShooterGame.exe; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F3A42A1F129F9400CF81E5 /* ShooterGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShooterGame-Info.plist"; sourceTree = "<group>"; };
 		12F3A42B1F129F9400CF81E5 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		12F3A42D1F129F9400CF81E5 /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		12F3A4271F129F9400CF81E5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				12F3A4261F129F9400CF81E5 /* ShooterGame.app */,
+				12F3A4261F129F9400CF81E5 /* ShooterGame.exe */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,7 +159,7 @@
 			);
 			name = ShooterGame;
 			productName = ShooterGame;
-			productReference = 12F3A4261F129F9400CF81E5 /* ShooterGame.app */;
+			productReference = 12F3A4261F129F9400CF81E5 /* ShooterGame.exe */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -343,6 +343,7 @@
 				INFOPLIST_FILE = "ShooterGame/ShooterGame-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = exe;
 			};
 			name = Debug;
 		};
@@ -352,6 +353,7 @@
 				INFOPLIST_FILE = "ShooterGame/ShooterGame-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = exe;
 			};
 			name = Release;
 		};

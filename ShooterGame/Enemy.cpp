@@ -29,6 +29,7 @@ Enemy::Enemy(sf::Vector2f pos) {
     
    //possision = sf::Vector2f(range(rgen), range2(rgen));
     
+    hitbox = sf::IntRect(possision.x,possision.y,10,10);
     
     
     
@@ -229,6 +230,7 @@ void Enemy::UpdatePossision(sf::Vector2f p_p){
     
     possision.x += offset_x;
     possision.y += offset_y;
+    hitbox = sf::IntRect(possision.x,possision.y,10,10);
         
     }
     

@@ -40,6 +40,15 @@ void Map::createEnemy(sf::Texture& enemy_tex){
     
 }
 
+void Map::deleteAllEnemys() noexcept {
+
+    
+    Enemys.clear();
+
+
+
+}
+
 void Map::Player_Enemy_Coll() noexcept{
 
     

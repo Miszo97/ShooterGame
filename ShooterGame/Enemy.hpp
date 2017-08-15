@@ -25,7 +25,7 @@ class Enemy : public Entity {
     
     
     public:
-    
+    sf::IntRect hitbox;
     sf::Sprite * getSprite();
     bool abilityToAtack();
     bool touched;
